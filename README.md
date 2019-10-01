@@ -2,6 +2,8 @@
 
 Super simple dotnet core project with tests.
 
+Hallo Wereld
+
 ## Cheatsheet
 
 azure-pipelines.yml
