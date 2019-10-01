@@ -28,3 +28,4 @@ steps:
   inputs:
     command: 'test'
     projects: '$(testProjects)'
+    arguments: '--collect "Code coverage"'
