@@ -12,8 +12,17 @@ pool:
 variables:
   buildProjects: '**/*.csproj'
   testProjects: '**/*Tests/*.csproj'
+  NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
+  NUGET_CACHE: 1 | nuget | packages.lock.json
+
 
 steps:
+- task: CacheBeta@0
+  displayName: Cache NuGet packages
+  inputs:
+    key: $(NUGET_CACHE)
+    path: $(NUGET_PACKAGES)
+  
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
