@@ -13,17 +13,8 @@ variables:
   buildProjects: '**/*.csproj'
   testProjects: '**/*Tests/*.csproj'
   webProjects: '**/*Web/*.csproj'
-  NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
-  NUGET_CACHE: nuget | **/package-lock.json
-
 
 steps:
-- task: CacheBeta@0
-  displayName: Cache NuGet packages
-  inputs:
-    key: $(NUGET_CACHE)
-    path: $(NUGET_PACKAGES)
-  
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
@@ -47,7 +38,6 @@ steps:
   displayName: 'dotnet publish'
   inputs:
     command: 'publish'
-    projects: '$(webProjects)'
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
