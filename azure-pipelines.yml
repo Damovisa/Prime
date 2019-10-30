@@ -9,9 +9,9 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-16.04'
+  vmImage: 'win1803'
 
-container: mcr.microsoft.com/dotnet/core/sdk:3.0
+container: mcr.microsoft.com/windows/servercore:1803
 
 variables:
   buildProjects: '**/*.csproj'
