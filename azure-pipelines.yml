@@ -43,5 +43,5 @@ steps:
     publishWebProjects: True
     zipAfterPublish: True
 
-- publish: 'prime/Prime.Web/bin/Debug/netcoreapp3.0/publish'
+- publish: $(System.DefaultWorkingDirectory)/prime/Prime.Web/bin/Debug/netcoreapp3.0/publish
   artifact: 'webApp'
