@@ -13,7 +13,7 @@ variables:
   buildProjects: '**/*.csproj'
   testProjects: '**/*Tests/*.csproj'
   NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
-  NUGET_CACHE: nuget | packages.lock.json
+  NUGET_CACHE: nuget
 
 
 steps:
