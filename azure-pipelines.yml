@@ -11,6 +11,8 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+container: mcr.microsoft.com/dotnet/core/sdk:3.0
+
 variables:
   buildProjects: '**/*.csproj'
   testProjects: '**/*Tests/*.csproj'
