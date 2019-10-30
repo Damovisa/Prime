@@ -12,8 +12,9 @@ pool:
 variables:
   buildProjects: '**/*.csproj'
   testProjects: '**/*Tests/*.csproj'
+  webProjects: '**/*Web/*.csproj'
   NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
-  NUGET_CACHE: nuget
+  NUGET_CACHE: nuget | **/package-lock.json
 
 
 steps:
@@ -41,3 +42,17 @@ steps:
     command: 'test'
     projects: '$(testProjects)'
     arguments: '--collect "Code coverage"'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    projects: '$(webProjects)'
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'drop'
