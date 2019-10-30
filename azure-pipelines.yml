@@ -42,5 +42,5 @@ steps:
     command: 'publish'
     publishWebProjects: True
 
-- publish: $(System.DefaultWorkingDirectory)/prime/Prime.Web/bin/Debug/netcoreapp3.0/publish
+- publish: $(System.DefaultWorkingDirectory)/prime/Prime.Web/bin/Debug/netcoreapp3.0/publish.zip
   artifact: 'webApp'
