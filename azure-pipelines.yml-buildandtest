@@ -12,17 +12,9 @@ pool:
 variables:
   buildProjects: '**/*.csproj'
   testProjects: '**/*Tests/*.csproj'
-  NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
-  NUGET_CACHE: nuget
-
+  webProjects: '**/*Web/*.csproj'
 
 steps:
-- task: CacheBeta@0
-  displayName: Cache NuGet packages
-  inputs:
-    key: $(NUGET_CACHE)
-    path: $(NUGET_PACKAGES)
-  
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
@@ -41,3 +33,19 @@ steps:
     command: 'test'
     projects: '$(testProjects)'
     arguments: '--collect "Code coverage"'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'drop'
+
+- publish: 'prime/Prime.Web/bin/Debug/netcoreapp3.0/publish'
+  artifact: 'webApp'
