@@ -6,6 +6,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimeService", "PrimeServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimeService.Tests", "PrimeService.Tests\PrimeService.Tests.csproj", "{03E9DC65-59E2-4879-A7B4-A425CB1A5D88}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Prime.Web", "Prime.Web\Prime.Web.csproj", "{84BC77EC-E5F6-45EB-89EA-66B2C2207353}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,18 @@ Global
 		{03E9DC65-59E2-4879-A7B4-A425CB1A5D88}.Release|x64.Build.0 = Release|Any CPU
 		{03E9DC65-59E2-4879-A7B4-A425CB1A5D88}.Release|x86.ActiveCfg = Release|Any CPU
 		{03E9DC65-59E2-4879-A7B4-A425CB1A5D88}.Release|x86.Build.0 = Release|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Debug|x64.Build.0 = Debug|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Debug|x86.Build.0 = Debug|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Release|x64.ActiveCfg = Release|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Release|x64.Build.0 = Release|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Release|x86.ActiveCfg = Release|Any CPU
+		{84BC77EC-E5F6-45EB-89EA-66B2C2207353}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
