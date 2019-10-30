@@ -42,7 +42,6 @@ steps:
     command: 'publish'
     publishWebProjects: True
     arguments: '--output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
 
 - publish: '$(Build.ArtifactStagingDirectory)'
   artifact: 'webApp'
