@@ -41,7 +41,8 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: True
+    arguments: '--output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
-- publish: $(System.DefaultWorkingDirectory)/prime/Prime.Web/bin/Debug/netcoreapp3.0/publish
+- publish: '$(Build.ArtifactStagingDirectory)'
   artifact: 'webApp'
