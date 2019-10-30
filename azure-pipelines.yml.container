@@ -1,0 +1,48 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+name: 1.0.$(Build.BuildId)
+
+trigger:
+- master
+
+pool:
+  vmImage: 'win1803'
+
+container: mcr.microsoft.com/dotnet/core/sdk:3.0
+
+variables:
+  buildProjects: '**/*.csproj'
+  testProjects: '**/*Tests/*.csproj'
+  webProjects: '**/*Web/*.csproj'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: 'restore'
+    projects: '$(buildProjects)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    command: 'build'
+    projects: '$(buildProjects)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+    command: 'test'
+    projects: '$(testProjects)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: True
+    arguments: '--output $(Build.ArtifactStagingDirectory)'
+
+- publish: '$(Build.ArtifactStagingDirectory)'
+  artifact: 'webApp'
