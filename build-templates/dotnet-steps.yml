@@ -1,0 +1,33 @@
+parameters:
+  buildProjects: ''
+  testProjects: ''
+  artifactName: 'webApp'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: 'restore'
+    projects: ${{ buildProjects }}
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    command: 'build'
+    projects: ${{ buildProjects }}
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+    command: 'test'
+    projects: ${{ testProjects }}
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: True
+    arguments: '--output $(Build.ArtifactStagingDirectory)'
+
+- publish: '$(Build.ArtifactStagingDirectory)'
+  artifact: ${{ parameters.artifactName }}

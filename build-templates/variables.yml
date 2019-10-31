@@ -1,0 +1,4 @@
+variables:
+  buildProjects: '**/*.csproj'
+  testProjects: '**/*Tests/*.csproj'
+  webProjects: '**/*Web/*.csproj'

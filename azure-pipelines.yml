@@ -14,35 +14,11 @@ pool:
 container: mcr.microsoft.com/dotnet/core/sdk:3.0
 
 variables:
-  buildProjects: '**/*.csproj'
-  testProjects: '**/*Tests/*.csproj'
-  webProjects: '**/*Web/*.csproj'
+- template: build-templates/variables.yml
 
 steps:
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet restore'
-  inputs:
-    command: 'restore'
-    projects: '$(buildProjects)'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet build'
-  inputs:
-    command: 'build'
-    projects: '$(buildProjects)'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet test'
-  inputs:
-    command: 'test'
-    projects: '$(testProjects)'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet publish'
-  inputs:
-    command: 'publish'
-    publishWebProjects: True
-    arguments: '--output $(Build.ArtifactStagingDirectory)'
-
-- publish: '$(Build.ArtifactStagingDirectory)'
-  artifact: 'webApp'
+- template: build-templates/dotnet-steps.yml
+  parameters:
+    buildProjects: '$(buildProjects)'
+    testProjects: '$(testProjects)'
+    artifactName: 'webApp'
