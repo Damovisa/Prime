@@ -8,19 +8,19 @@ steps:
   displayName: 'dotnet restore'
   inputs:
     command: 'restore'
-    projects: '${{ buildProjects }}'
+    projects: '${{ parameters.buildProjects }}'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
     command: 'build'
-    projects: '${{ buildProjects }}'
+    projects: '${{ parameters.buildProjects }}'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
   inputs:
     command: 'test'
-    projects: '${{ testProjects }}'
+    projects: '${{ parameters.testProjects }}'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish'

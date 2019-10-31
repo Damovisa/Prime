@@ -13,12 +13,9 @@ pool:
 
 container: mcr.microsoft.com/dotnet/core/sdk:3.0
 
-variables:
-- template: build-templates/variables.yml
-
 steps:
 - template: build-templates/dotnet-steps.yml
   parameters:
-    buildProjects: $(buildProjects)
-    testProjects: $(testProjects)
+    buildProjects: '**/*.csproj'
+    testProjects: '**/*Tests/*.csproj'
     artifactName: 'webApp'
