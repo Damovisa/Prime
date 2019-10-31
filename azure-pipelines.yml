@@ -19,6 +19,6 @@ variables:
 steps:
 - template: build-templates/dotnet-steps.yml
   parameters:
-    buildProjects: '$(buildProjects)'
-    testProjects: '$(testProjects)'
+    buildProjects: $(buildProjects)
+    testProjects: $(testProjects)
     artifactName: 'webApp'
