@@ -9,7 +9,6 @@ pool:
 variables:
   buildProjects: '**/*.csproj'
   testProjects: '**/*Tests/*.csproj'
-  webProjects: '**/*Web/*.csproj'
 
 steps:
 - task: DotNetCoreCLI@2
