@@ -9,7 +9,7 @@ trigger:
 - master
 
 stages:
-- stage: build-stage
+- stage: build_stage
   jobs:
   - job: build
     pool:
