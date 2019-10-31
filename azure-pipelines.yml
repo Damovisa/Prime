@@ -8,14 +8,16 @@ name: 1.0.$(Build.BuildId)
 trigger:
 - master
 
-jobs:
-- job: build
-  pool:
-    vmImage: 'win1803'
-  container: mcr.microsoft.com/dotnet/core/sdk:3.0
-  steps:
-  - template: build-templates/dotnet-steps.yml
-    parameters:
-      buildProjects: '**/*.csproj'
-      testProjects: '**/*Tests/*.csproj'
-      artifactName: 'webApp'
+stages:
+- stage: build-stage
+  jobs:
+  - job: build
+    pool:
+      vmImage: 'win1803'
+    container: mcr.microsoft.com/dotnet/core/sdk:3.0
+    steps:
+    - template: build-templates/dotnet-steps.yml
+      parameters:
+        buildProjects: '**/*.csproj'
+        testProjects: '**/*Tests/*.csproj'
+        artifactName: 'webApp'
