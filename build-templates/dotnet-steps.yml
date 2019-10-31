@@ -8,19 +8,19 @@ steps:
   displayName: 'dotnet restore'
   inputs:
     command: 'restore'
-    projects: ${{ buildProjects }}
+    projects: '${{ buildProjects }}'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
     command: 'build'
-    projects: ${{ buildProjects }}
+    projects: '${{ buildProjects }}'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
   inputs:
     command: 'test'
-    projects: ${{ testProjects }}
+    projects: '${{ testProjects }}'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish'
@@ -30,4 +30,4 @@ steps:
     arguments: '--output $(Build.ArtifactStagingDirectory)'
 
 - publish: '$(Build.ArtifactStagingDirectory)'
-  artifact: ${{ parameters.artifactName }}
+  artifact: '${{ parameters.artifactName }}'
